@@ -60,6 +60,7 @@ export default {
     watch:{
         actualOption:function(){
             this.$store.commit('setMonth',this.actualOption)
+            this.$store.dispatch('makeRequest',this.actualOption)
         }
     },
 

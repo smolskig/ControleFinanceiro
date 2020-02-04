@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="nav">
+    <div class="nav ">
       <month-button></month-button>
       <div class="month">
         <span>{{months[actualMonth]}}</span>
@@ -20,7 +20,7 @@ import monthButton from './components/monthButtons.vue'
 export default {
   data(){
     return{
-      months:['Jan','Fev','Mar','Abr','Mai','Jun','jul','Ago','Set','Out','Nov','Dez']
+      months:['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
     }
   },
   components:{
