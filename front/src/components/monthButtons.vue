@@ -60,7 +60,7 @@ export default {
     watch:{
         actualOption:function(){
             this.$store.commit('setMonth',this.actualOption)
-            this.$store.dispatch('makeRequest',this.actualOption)
+            this.$store.dispatch('makeRequest',this.actMonth)
         }
     },
 
@@ -76,10 +76,11 @@ export default {
 .month-selector {
     width:100%;
     height:50px;
-    font-weight: bold;
     padding-left:15px;
     border:none;
-    color: #2c3e50;
-    box-shadow:  -4px -4px 4px rgba(255, 255, 255, 0.25),  4px 4px 4px rgba(0, 0, 0, 0.22); 
+    border-radius:5px;
+    background: #242831;
+    color: #FFF;
+    box-shadow:  -4px -4px 4px #898989,  4px 4px 15px rgba(0, 0, 0, 0.22); 
 }
 </style>

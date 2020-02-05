@@ -6,12 +6,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    actualMonth:'0',
+    actualMonth:0,
     data:[]
   },
   mutations: {
     setMonth(state,payload){
-      state.actualMonth = payload
+      if(payload >= 0 && payload <= 11){
+        state.actualMonth = payload  
+      }
     },
     setData(state,payload){
       state.data = payload
@@ -20,7 +22,7 @@ export default new Vuex.Store({
   
   actions: {
     makeRequest({commit},data){
-      Axios.get('http://localhost:3000/show/month/' + data)
+      Axios.get('http://192.168.11.145:3000/show/month/' + data)
       .then(res=>{
         commit('setData',res)
         window.console.log(res)
