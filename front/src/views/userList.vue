@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import transactionPanel from '@/components/transactionPanel.vue'
+import transactionPanel from '@/components/transactionPanel/transactionPanel.vue'
 export default {
   components:{
     transactionPanel

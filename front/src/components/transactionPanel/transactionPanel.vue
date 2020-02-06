@@ -1,6 +1,6 @@
 <template>
   <div class="root">
-    <div v-for="(item,index) in actualData.data" :key="index" class="transaction">
+    <div v-for="(item,index) in actualData.data" :key="index" class="transaction" :class="{'darkmode':actualTheme}">
       <span class="value">R$ {{item.value}}</span>
       <span class="description">{{item.description}}</span>
       <span class="date">{{months[item.month]}}</span> 
@@ -18,6 +18,9 @@ export default {
   computed:{
   actualData(){
     return this.$store.state.data
+  },
+  actualTheme(){
+    return this.$store.state.darkMode
   }
 }
 }
@@ -32,7 +35,7 @@ export default {
     align-items:center;
     align-content: center;
     width:100%;
-    margin-top:45px;
+    
   }
   .transaction{
     position:relative;
@@ -46,7 +49,7 @@ export default {
     margin:11px;
     background: #EFEEEE;
     opacity: 0.9;
-    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.13), -3px -3px 9px rgba(255, 255, 255, 0.35);
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.13), -3px -3px 2px rgba(255, 255, 255, 0.05);
     border-radius: 20px;
   }
   .value{
@@ -84,7 +87,6 @@ export default {
     color: #D6853B;
   }
 
-
 @media (max-width:955px){
   .root{
     margin-top:10px;
@@ -93,7 +95,7 @@ export default {
     width:95%;
     height: 70px;
     padding:15px;
-    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.25), -3px -3px 9px rgba(255, 255, 255, 0.7);
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.13), -3px -3px 2px rgba(255, 255, 255, 0.05);
     border-radius: 20px;
   }
   .description{
@@ -107,5 +109,10 @@ export default {
   .date{
     font-size:20px;
   }
+}
+
+
+.darkmode{
+  background:#242831;
 }
 </style>

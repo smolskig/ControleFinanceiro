@@ -1,17 +1,17 @@
 <template>
   <div class="main-viewer">
     <div @click="changeMonth(false)" class="btn-month previous">
-      <div class="arrow sm"></div>
-      <div class="arrow md"></div>
-      <div class="arrow lg"></div>
+      <div class="arrow sm" :class="{'darkmode':actualTheme}"></div>
+      <div class="arrow md" :class="{'darkmode':actualTheme}"></div>
+      <div class="arrow lg" :class="{'darkmode':actualTheme}"></div>
     </div>
-    <div class="month">
+    <div class="month" :class="{'darkmode':actualTheme}">
       <span style="color:#959CAB;">{{months[actualMonth]}}</span>
     </div>
     <div @click="changeMonth(true)" class="btn-month next">
-      <div class="arrow sm"></div>
-      <div class="arrow md"></div>
-      <div class="arrow lg"></div>
+      <div class="arrow sm" :class="{'darkmode':actualTheme}"></div>
+      <div class="arrow md" :class="{'darkmode':actualTheme}"></div>
+      <div class="arrow lg" :class="{'darkmode':actualTheme}"></div>
     </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
     computed:{
     actualMonth(){
       return this.$store.state.actualMonth
+    },
+    actualTheme(){
+      return this.$store.state.darkMode
     }
   },
   methods:{
@@ -74,7 +77,7 @@ export default {
   height:70px;
   text-align: center;
   background: #EFEEEE;
-  box-shadow: inset 3px 3px 9px rgba(0, 0, 0, 0.15), inset -3px -3px 9px rgba(255, 255, 255, 0.36);
+  box-shadow: inset 2px 2px 9px rgba(0, 0, 0, 0.13),inset -3px -3px 2px rgba(255, 255, 255, 0.05);
   border-radius: 20px;
 }
 .previous{
@@ -94,14 +97,14 @@ export default {
   margin-right:0;
   background: #EFEEEE;
   border-radius: 50px;
-  transition:.1s;
+  transition: box-shadow .1s;
 }
 
 .next .arrow{
-  box-shadow: -4px 4px 7px rgba(0, 0, 0, 0.25), -2px -2px 10px rgba(255, 255, 255, 0.66);
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.200), 2px -2px 5px rgba(255, 255, 255, 0.068);
 }
 .previous .arrow{
-  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25), -2px -2px 10px rgba(255, 255, 255, 0.66);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.200), -2px -2px 5px rgba(255, 255, 255, 0.068);
 }
 .sm{
   height: 15px;
@@ -117,7 +120,7 @@ export default {
   cursor: pointer;
 }
 .btn-month:active .arrow{
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25), 0px 0px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25), 0px 0px 1px rgba(255, 255, 255, 0.178);
 }
 
 @media (max-width:425px){
@@ -132,4 +135,8 @@ export default {
     margin:5px;
   }
 }
+
+.darkmode{
+    background:#242831;
+  }
 </style>

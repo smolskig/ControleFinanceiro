@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     actualMonth:0,
-    data:[]
+    data:[],
+    darkMode:false
   },
   mutations: {
     setMonth(state,payload){
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     },
     setData(state,payload){
       state.data = payload
+    },
+    setDarkMode(state,payload){
+      state.darkMode = payload
     }
   },
   

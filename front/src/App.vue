@@ -1,24 +1,31 @@
 <template>
-  <div id="app">
-    <div class="nav">
+  <div class="app" :class="{'darkmode':check}">
+    <div class="nav" :class="{'darkmode':check}">
+        <input type="checkbox" name="check" id="check" v-model="check">
         <monthViewer></monthViewer>
     </div>
     <router-view class="router"/>
-    <div class="footer">
-      <div class="btn-hole">
-        <div class="btn-add">
-          <i class="material-icons" style="color:white; font-size:3em;">add</i>
-        </div>
-      </div>
-    </div>
+    <footer-menu></footer-menu>
   </div>
 </template>
 
 <script>
-import monthViewer from '@/components/monthViewer.vue'
+import monthViewer from '@/components/monthViewer/monthViewer.vue'
+import footer from '@/components/footer/footer.vue'
 export default {
+  data(){
+    return{
+      check:false
+    }
+  },
+  watch:{
+    check:function(value){
+      this.$store.commit('setDarkMode',value)
+    }
+  },
   components:{
-    monthViewer
+    monthViewer,
+    'footer-menu':footer
   },
   computed:{
     actualMonth(){
@@ -29,16 +36,18 @@ export default {
 }
 </script>
 <style scoped>
-#app{
+.app{
   display:flex;
   flex-direction: column;
   font-family: 'roboto', Helvetica, Arial, sans-serif;
   color: #2c3e50;
   height: 100%;
+  background:#EFEEEE;
 }
 .router{
   overflow: auto;
   height:100% !important;
+  
 }
 .nav{
   z-index:2;
@@ -52,43 +61,8 @@ export default {
   background: #EFEEEE;
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.123);
 }
-.footer{
-  z-index:2;
-  display:flex;
-  flex-direction: row;
-  align-content: center;
-  height:120px;
-  justify-content: center;
-  align-items: center;
-  padding:10px;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  background: #EFEEEE;
-  box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.123);
-}
-.btn-hole{
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  width:80px;
-  height:80px;
-  background: #EFEEEE;
-  border-radius: 100px;
-  box-shadow: inset -4px -4px 16px rgba(0, 0, 0, 0.25);
-}
-.btn-add{
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  width:60px;
-  height:60px;
-  background: rgba(59, 214, 89, 0.62);
-  box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25), -4px -4px 9px rgba(255, 255, 255, 0.22);
-  border-radius: 100px;
-  border-radius:80px;
-}
-.btn-add:hover{
-  cursor: pointer;
-}
 
+.darkmode{
+  background:#242831;
+}
 </style>
